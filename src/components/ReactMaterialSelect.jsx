@@ -129,7 +129,7 @@ class ReactMaterialSelect extends Component {
                 <i className="rms-caret">arrow_drop_down</i>
                 {this.state.isOpen && <ul className='rms-list'>
                     <li className="rms-item rms-item__reset" onMouseDown={this.handleResetClick} onClick={this.handleResetClick}>
-                        {resetLabel ? resetLabel : 'Reset Select'}
+                        {resetLabel ? resetLabel : 'No value'}
                     </li>
                     {this.getOptions().map((opt, key) => {
                         let selectClassName = classNames('rms-item', {'rms-item__active': opt.selected})

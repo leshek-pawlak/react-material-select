@@ -29,6 +29,7 @@ It should looks like below:
 ```
 import React, {Component} from 'react'
 import ReactMaterialSelect from 'react-material-select'
+import 'react-material-select/lib/css/reactMaterialSelect.css'
 
 class Example extends Component {
     render() {
@@ -47,7 +48,7 @@ class Example extends Component {
         onChange: callback function (function)
         defaultValue: start value. One of dataValue keys. Default: null (string)
         label: label for select. Default: null (string)
-        resetLabel: label for reset select value. Default: 'Reset Select' (string)
+        resetLabel: label for reset select value. Default: 'No value' (string)
 
     option element
         dataValue: selected value (string)
@@ -57,6 +58,7 @@ class Example extends Component {
 ```
 import React, {Component} from 'react'
 import ReactMaterialSelect from 'react-material-select'
+import 'react-material-select/lib/css/reactMaterialSelect.css'
 
 getValue() {
     this.setState({
