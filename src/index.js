@@ -1,1 +1,3 @@
-export * from './components/ReactMaterialSelect'
+import ReactMaterialSelect from './components/ReactMaterialSelect'
+
+export default ReactMaterialSelect
