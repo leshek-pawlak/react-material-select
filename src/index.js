@@ -1,1 +1,1 @@
-export ReactMaterialSelect from './components/ReactMaterialSelect'
+export * from './components/ReactMaterialSelect'
