@@ -1,0 +1,54 @@
+/* Colors */
+$white: rgb(246, 249, 246);
+$grey: rgb(201, 204, 201);
+$greyer: rgb(92, 96, 92);
+$black: rgb(50, 54, 49);
+$green: rgb(110, 216, 193);
+$red: rgb(255, 100, 94);
+$yellow: rgb(254, 238, 205);
+/* Utils */
+body,
+html {
+    font-family: 'Roboto';
+}
+
+h2 {
+    font-weight: bold;
+    font-size: 24px;
+    padding-left: 20px;
+    /* mobile styles */
+    @media screen and (max-width: 839px) {
+        padding-left: 0;
+    }
+}
+
+h3 {
+    color: $greyer;
+    font-size: 18px;
+    text-transform: uppercase;
+    /* mobile styles */
+    @media screen and (max-width: 839px) {
+        margin-top: 0;
+    }
+}
+
+h4 {
+    color: $greyer;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+}
+
+p,
+span {
+    font-size: 14px;
+}
+
+.display-value {
+    margin: 10px 0 70px;
+
+    .label,
+    .value {
+        margin-left: 20px;
+    }
+}

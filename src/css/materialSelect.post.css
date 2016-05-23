@@ -1,0 +1,122 @@
+/* Icon font class */
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    word-wrap: normal;
+    -moz-font-feature-settings: 'liga';
+    font-feature-settings: 'liga';
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+/* animation class */
+.material-select__animation {
+    transition-duration: .2s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rms-wrapper {
+    display: block;
+    position: relative;
+}
+
+.rms-label {
+    @extend .material-select__animation;
+    color: rgb(63, 81, 181);
+    font-size: 12px;
+    top: 4px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    visibility: visible;
+    pointer-events: none;
+    position: absolute;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: left;
+}
+
+.rms-text {
+    position: relative;
+    font-size: 16px;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 20px 0;
+    cursor: pointer;
+
+    span {
+        border: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+        display: block;
+        font-size: 16px;
+        font-family: "Helvetica", "Arial", sans-serif;
+        margin: 0;
+        padding: 4px 0;
+        width: 100%;
+        background: none;
+        text-align: left;
+        color: inherit;
+    }
+
+    &__empty {
+        span {
+            color: rgb(197, 197, 197);
+            font-weight: 100;
+        }
+
+        & + label {
+            display: none;
+        }
+    }
+}
+
+.rms-caret {
+    @extend .material-icons;
+    position: absolute;
+    right: 8px;
+    top: 20px;
+    color: rgba(0, 0, 0, 0.12);
+}
+
+.rms-list {
+    user-select: none;
+    position: absolute;
+    transition: .25s ease;
+    top: 0;
+    left: 0;
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    box-shadow: 0 3px 10px #adadad;
+    z-index: 1000;
+
+    .rms-item {
+        padding: 0 8px;
+        line-height: 35px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #eaeaea;
+        }
+
+        &__active {
+            background: #eaeaea;
+        }
+
+        &__reset {
+            opacity: .3;
+        }
+    }
+}
