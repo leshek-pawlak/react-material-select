@@ -6,9 +6,13 @@
 
 # Installation
 
+$ `npm i react-material-select --save`
 
-## Install dependencies
-$ `npm install`
+---
+
+# Examples
+
+http://react-material-select.netlify.com/
 
 ---
 
@@ -27,9 +31,11 @@ It should looks like below:
 
 ```
 import React, {Component} from 'react'
-import ReactMaterialSelect from 'components/ReactMaterialSelect'
+import ReactMaterialSelect from 'react-material-select'
 
-callbackFunction() { ... }
+callbackFunction(selected) {
+    return selected.value
+}
 
 class Example extends Component {
     render() {
@@ -52,23 +58,3 @@ class Example extends Component {
 
     option element
         dataValue: selected value (string)
-
----
-
-# Development
-
-Run locally
-$ `npm run dev`
-
-Make build
-$ `npm run build`
-
----
-
-### Linters
-
-    Atom editor:
-
-        Eslinter for JavaScripts: https://atom.io/packages/linter-eslint
-
-        Stylelinter for Css: https://atom.io/packages/linter-stylelint
