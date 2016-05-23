@@ -17,7 +17,7 @@ $ `npm install`
 ## Basic Usage
 
 ### Required options:
-    MaterialSelect:
+    ReactMaterialSelect:
         onChange: callback function (function)
 
     option element:
@@ -27,24 +27,24 @@ It should looks like below:
 
 ```
 import React, {Component} from 'react'
-import MaterialSelect from 'components/MaterialSelect'
+import ReactMaterialSelect from 'components/ReactMaterialSelect'
 
 callbackFunction() { ... }
 
 class Example extends Component {
     render() {
         return (
-            <MaterialSelect onChange={this.callbackFunction}>
+            <ReactMaterialSelect onChange={this.callbackFunction}>
                 <option dataValue="@#!$RGSAFSDF">First Option</option>
                 ...
-            </MaterialSelect>
+            </ReactMaterialSelect>
         )
     }
 }
 ```
 
 ## All options:
-    MaterialSelect
+    ReactMaterialSelect
         onChange: callback function (function)
         defaultValue: start value. One of dataValue keys. Default: null (string)
         label: label for select. Default: null (string)

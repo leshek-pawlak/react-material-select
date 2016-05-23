@@ -1,63 +1,75 @@
 {
-    "name": "react-material-select",
-    "license": "MIT",
-    "version": "1.0.0",
-    "keywords": ["react", "material", "select"],
-    "description": "React select with Material Design wrote in ES2015(ES6)",
-    "scripts": {
-        "dev": "webpack-dev-server --history-api-fallback --hot --inline --progress",
-        "build": "webpack --config webpack.build.js --bail"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/leshek-pawlak/react-material-select"
-    },
-    "homepage": "http://react-material-select.netlify.com/",
-    "author": {
-        "email": "leshekpawlak@gmail.com",
-        "name": "Leszek Pawlak"
-    },
-    "dependencies": {
-        "classnames": "^2.2.5",
-        "react": "^15.0.2",
-        "react-dom": "^15.0.2"
-    },
-    "devDependencies": {
-        "autoprefixer": "^6.3.6",
-        "babel": "^6.5.2",
-        "babel-core": "^6.8.0",
-        "babel-eslint": "^6.0.4",
-        "babel-loader": "^6.2.4",
-        "babel-plugin-add-module-exports": "^0.2.1",
-        "babel-plugin-react-transform": "^2.0.2",
-        "babel-plugin-transform-decorators-legacy": "^1.3.4",
-        "babel-preset-es2015": "^6.6.0",
-        "babel-preset-react": "^6.5.0",
-        "babel-preset-stage-0": "^6.5.0",
-        "css-loader": "^0.23.1",
-        "eslint": "^2.10.2",
-        "eslint-loader": "^1.3.0",
-        "eslint-plugin-react": "^5.1.1",
-        "exports-loader": "^0.6.3",
-        "expose-loader": "^0.7.1",
-        "extract-text-webpack-plugin": "^1.0.1",
-        "file-loader": "^0.8.5",
-        "html-webpack-plugin": "^2.17.0",
-        "imports-loader": "^0.6.5",
-        "postcss-extend": "^1.0.1",
-        "postcss-font-magician": "^1.4.0",
-        "postcss-import": "^8.1.2",
-        "postcss-loader": "^0.9.1",
-        "postcss-nested": "^1.0.0",
-        "postcss-quantity-queries": "^0.4.0",
-        "postcss-simple-vars": "^1.2.0",
-        "raw-loader": "^0.5.1",
-        "style-loader": "^0.13.1",
-        "stylelint": "^6.3.3",
-        "stylelint-config-standard": "^7.0.0",
-        "url-loader": "^0.5.7",
-        "webpack": "^1.13.0",
-        "webpack-dev-server": "^1.14.1",
-        "webpack-notifier": "^1.3.1"
-    }
+  "name": "react-material-select",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "version": "1.0.0",
+  "keywords": [
+    "react",
+    "material",
+    "select"
+  ],
+  "description": "React select with Material Design wrote in ES2015(ES6)",
+  "scripts": {
+    "compile": "rimraf lib && babel src --ignore views --out-dir lib && postcss -u autoprefixer -u postcss-nested -u postcss-quantity-queries -u postcss-extend -o lib/css/reactMaterialSelect.css src/css/reactMaterialSelect.css",
+    "dev": "webpack-dev-server --history-api-fallback --hot --inline --progress",
+    "build": "webpack --config webpack.build.js --bail"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leshek-pawlak/react-material-select"
+  },
+  "homepage": "http://react-material-select.netlify.com/",
+  "author": {
+    "email": "leshekpawlak@gmail.com",
+    "name": "Leszek Pawlak"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5"
+  },
+  "peerDependencies": {
+    "react": "0.14.x || ^15.0.2",
+    "react-dom": "0.14.x || ^15.0.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.3.6",
+    "babel": "^6.5.2",
+    "babel-cli": "^6.9.0",
+    "babel-core": "^6.8.0",
+    "babel-eslint": "^6.0.4",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-react-transform": "^2.0.2",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "copy-webpack-plugin": "^3.0.0",
+    "css-loader": "^0.23.1",
+    "eslint": "^2.10.2",
+    "eslint-loader": "^1.3.0",
+    "eslint-plugin-react": "^5.1.1",
+    "exports-loader": "^0.6.3",
+    "expose-loader": "^0.7.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
+    "html-webpack-plugin": "^2.17.0",
+    "imports-loader": "^0.6.5",
+    "postcss-extend": "^1.0.1",
+    "postcss-font-magician": "^1.4.0",
+    "postcss-import": "^8.1.2",
+    "postcss-loader": "^0.9.1",
+    "postcss-nested": "^1.0.0",
+    "postcss-quantity-queries": "^0.4.0",
+    "postcss-simple-vars": "^1.2.0",
+    "raw-loader": "^0.5.1",
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2",
+    "rimraf": "^2.5.2",
+    "style-loader": "^0.13.1",
+    "stylelint": "^6.3.3",
+    "stylelint-config-standard": "^7.0.0",
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-notifier": "^1.3.1"
+  }
 }

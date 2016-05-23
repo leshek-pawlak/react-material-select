@@ -6,6 +6,7 @@ var path = require('path')
 var WebpackNotifierPlugin = require('webpack-notifier')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = function makeWebpackConfig(options) {
     /**
@@ -20,8 +21,8 @@ module.exports = function makeWebpackConfig(options) {
      * Entry configuration
      */
     config.entry = {
-        app: ['./src/index'],
-        vendor: ['react'],
+        app: ['./src/views/index'],
+        vendor: ['react', 'react-dom'],
     }
 
     /**
@@ -40,8 +41,6 @@ module.exports = function makeWebpackConfig(options) {
         publicPath: BUILD ? '/' : 'http://localhost:8080/',
         filename: BUILD ? '[name].[hash].js' : '[name].bundle.js',
         chunkFilename: BUILD ? '[name].[hash].js' : '[name].bundle.js',
-        libraryTarget: BUILD ? 'umd' : 'var',
-        library: 'react-material-select',
     }
 
     /**
@@ -87,12 +86,6 @@ module.exports = function makeWebpackConfig(options) {
                 commonjs: 'react-dom',
                 amd: 'react-dom',
             },
-            'classnames': {
-                root: 'classNames',
-                commonjs2: 'classnames',
-                commonjs: 'classnames',
-                amd: 'classnames',
-            },
         },
     }
 
@@ -126,7 +119,7 @@ module.exports = function makeWebpackConfig(options) {
         }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new HtmlWebpackPlugin({
-            template: './src/index.html',
+            template: './src/views/index.html',
             inject: 'body',
         }),
     ]
@@ -144,7 +137,12 @@ module.exports = function makeWebpackConfig(options) {
         config.plugins.push(
             new webpack.NoErrorsPlugin(),
             new webpack.optimize.DedupePlugin(),
-            new webpack.optimize.UglifyJsPlugin()
+            new webpack.optimize.UglifyJsPlugin(),
+            new CopyWebpackPlugin([
+                {
+                    from: './src/views/favicon.ico',
+                },
+            ])
         )
     }
 

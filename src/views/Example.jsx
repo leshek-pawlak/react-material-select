@@ -1,7 +1,7 @@
-import 'css/example.post.css'
+import 'css/example.css'
 import React, {Component} from 'react'
 
-import MaterialSelect from 'components/MaterialSelect'
+import ReactMaterialSelect from 'components/ReactMaterialSelect'
 
 class Example extends Component {
     constructor() {
@@ -45,39 +45,39 @@ class Example extends Component {
             <div>
                 <section id="example-1">
 
-                    <MaterialSelect onChange={this.callbackFunction1}>
+                    <ReactMaterialSelect onChange={this.callbackFunction1}>
                         <option dataValue="@#!$RGSAFSDF">First Option</option>
                         <option dataValue="fgfsdgfdsg">Second Option</option>
                         <option dataValue="43523454232">Third Option</option>
                         <option dataValue="vxvbvbx">Fourth Option</option>
                         <option dataValue="@agsfdg">Darth Vader</option>
-                    </MaterialSelect>
+                    </ReactMaterialSelect>
 
                     {this.renderObject(this.state.selected1)}
                 </section>
 
                 <section id="example-2">
 
-                    <MaterialSelect label="Test Label" resetLabel="Join to the dark side" onChange={this.callbackFunction2}>
+                    <ReactMaterialSelect label="Test Label" resetLabel="Join to the dark side" onChange={this.callbackFunction2}>
                         <option dataValue="@#!$RGSAFSDF">First Option</option>
                         <option dataValue="fgfsdgfdsg">Second Option</option>
                         <option dataValue="43523454232">Third Option</option>
                         <option dataValue="vxvbvbx">Fourth Option</option>
                         <option dataValue="@agsfdg">Darth Vader</option>
-                    </MaterialSelect>
+                    </ReactMaterialSelect>
 
                     {this.renderObject(this.state.selected2)}
                 </section>
 
                 <section id="example-3">
 
-                    <MaterialSelect label="Test Label" resetLabel="Join to the dark side" defaultValue="@#!$RGSAFSDF" onChange={this.callbackFunction3}>
+                    <ReactMaterialSelect label="Test Label" resetLabel="Join to the dark side" defaultValue="@#!$RGSAFSDF" onChange={this.callbackFunction3}>
                         <option dataValue="@#!$RGSAFSDF">First Option</option>
                         <option dataValue="fgfsdgfdsg">Second Option</option>
                         <option dataValue="43523454232">Third Option</option>
                         <option dataValue="vxvbvbx">Fourth Option</option>
                         <option dataValue="@agsfdg">Darth Vader</option>
-                    </MaterialSelect>
+                    </ReactMaterialSelect>
 
                     {this.renderObject(this.state.selected3)}
                 </section>

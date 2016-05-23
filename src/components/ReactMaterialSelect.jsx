@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react'
 import ReactDOM from 'react-dom'
 import classNames from 'classnames'
 
-class MaterialSelect extends Component {
+class ReactMaterialSelect extends Component {
     constructor(props) {
         super(props)
 
@@ -133,7 +133,7 @@ class MaterialSelect extends Component {
     }
 }
 
-MaterialSelect.propTypes = {
+ReactMaterialSelect.propTypes = {
     children: PropTypes.array.isRequired,
     onChange: PropTypes.func.isRequired,
     defaultValue: PropTypes.string,
@@ -141,4 +141,4 @@ MaterialSelect.propTypes = {
     label: PropTypes.string,
 }
 
-export default MaterialSelect
+export default ReactMaterialSelect
