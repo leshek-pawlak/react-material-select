@@ -49,6 +49,10 @@ class ReactMaterialSelect extends Component {
         return this.state.selected.value
     }
 
+    getLabel() {
+        return this.state.selected.label
+    }
+
     handleToggleSelect() {
         this.setState({isOpen: !this.state.isOpen})
     }

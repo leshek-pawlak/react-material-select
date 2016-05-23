@@ -13,15 +13,18 @@ class Example extends Component {
             selected3: {},
         }
 
-        this.callbackFunction1 = this.callbackFunction1.bind(this)
+        this.getValue = this.getValue.bind(this)
         this.callbackFunction2 = this.callbackFunction2.bind(this)
         this.callbackFunction3 = this.callbackFunction3.bind(this)
     }
 
     getValue() {
-        this.setState({selected: {
-            value: this.refs.firstselect.getValue(),
-        }})
+        this.setState({
+            selected1: {
+                value: this.refs.firstselect.getValue(),
+                label: this.refs.firstselect.getLabel(),
+            },
+        })
     }
 
     callbackFunction2(selected) {
@@ -54,6 +57,7 @@ class Example extends Component {
                         <option dataValue="vxvbvbx">Fourth Option</option>
                         <option dataValue="@agsfdg">Darth Vader</option>
                     </ReactMaterialSelect>
+                    <button onClick={this.getValue}>Get value from select</button>
 
                     {this.renderObject(this.state.selected1)}
                 </section>
@@ -73,7 +77,7 @@ class Example extends Component {
 
                 <section id="example-3">
 
-                    <ReactMaterialSelect label="Test Label" resetLabel="Join to the dark side" defaultValue="@#!$RGSAFSDF" onChange={this.callbackFunction3}>
+                    <ReactMaterialSelect label="ksdahfhf awef" defaultValue="@#!$RGSAFSDF" onChange={this.callbackFunction3}>
                         <option dataValue="@#!$RGSAFSDF">First Option</option>
                         <option dataValue="fgfsdgfdsg">Second Option</option>
                         <option dataValue="43523454232">Third Option</option>
