@@ -30,6 +30,7 @@ class ReactMaterialSelect extends Component {
         this.handleToggleSelect = this.handleToggleSelect.bind(this)
         this.handleOptionClick = this.handleOptionClick.bind(this)
         this.handleResetClick = this.handleResetClick.bind(this)
+        this.getValue = this.getValue.bind(this)
     }
 
     componentDidMount() {
@@ -41,6 +42,11 @@ class ReactMaterialSelect extends Component {
         this.mounted = false
         document.removeEventListener('click', this.handleDocumentClick, false)
         document.removeEventListener('touchend', this.handleDocumentClick, false)
+    }
+
+    // the simplest way to get selected value
+    getValue() {
+        return this.state.selected.value
     }
 
     handleToggleSelect() {
@@ -135,9 +141,9 @@ class ReactMaterialSelect extends Component {
 
 ReactMaterialSelect.propTypes = {
     children: PropTypes.array.isRequired,
-    onChange: PropTypes.func.isRequired,
     defaultValue: PropTypes.string,
     resetLabel: PropTypes.string,
+    onChange: PropTypes.func,
     label: PropTypes.string,
 }
 

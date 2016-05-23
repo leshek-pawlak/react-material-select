@@ -18,8 +18,10 @@ class Example extends Component {
         this.callbackFunction3 = this.callbackFunction3.bind(this)
     }
 
-    callbackFunction1(selected) {
-        this.setState({selected1: selected})
+    getValue() {
+        this.setState({selected: {
+            value: this.refs.firstselect.getValue(),
+        }})
     }
 
     callbackFunction2(selected) {
@@ -45,7 +47,7 @@ class Example extends Component {
             <div>
                 <section id="example-1">
 
-                    <ReactMaterialSelect onChange={this.callbackFunction1}>
+                    <ReactMaterialSelect ref="firstselect">
                         <option dataValue="@#!$RGSAFSDF">First Option</option>
                         <option dataValue="fgfsdgfdsg">Second Option</option>
                         <option dataValue="43523454232">Third Option</option>

@@ -21,9 +21,6 @@ http://react-material-select.netlify.com/
 ## Basic Usage
 
 ### Required options:
-    ReactMaterialSelect:
-        onChange: callback function (function)
-
     option element:
         dataValue: selected value (string)
 
@@ -33,14 +30,10 @@ It should looks like below:
 import React, {Component} from 'react'
 import ReactMaterialSelect from 'react-material-select'
 
-callbackFunction(selected) {
-    return selected.value
-}
-
 class Example extends Component {
     render() {
         return (
-            <ReactMaterialSelect onChange={this.callbackFunction}>
+            <ReactMaterialSelect>
                 <option dataValue="@#!$RGSAFSDF">First Option</option>
                 ...
             </ReactMaterialSelect>

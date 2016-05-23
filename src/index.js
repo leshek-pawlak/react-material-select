@@ -1,1 +1,1 @@
-export { default as ReactMaterialSelect } from 'components/ReactMaterialSelect'
+export ReactMaterialSelect from './components/ReactMaterialSelect'
