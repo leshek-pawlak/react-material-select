@@ -1,5 +1,9 @@
 import 'css/example.css'
+import 'react-mdl/extra/material.css'
+import 'highlight.js/styles/hybrid.css'
 import React, {Component} from 'react'
+import {Layout, Navigation, Header, Content, Button, Grid, Cell} from 'react-mdl'
+import Highlight from 'react-highlight'
 
 import ReactMaterialSelect from 'components/ReactMaterialSelect'
 
@@ -47,47 +51,99 @@ class Example extends Component {
 
     render() {
         return (
-            <div>
-                <section id="example-1">
+            <Layout fixedHeader>
+               <Header title="React Material Select">
+                   <Navigation>
+                       <a href="#example-1">Minimal</a>
+                       <a href="#example-2">Default</a>
+                       <a href="#example-3">Maximum</a>
+                   </Navigation>
+               </Header>
+               <Content>
+                    <Grid>
+                        <Cell col={12}>
+                            <section id="example-1">
+                                <h2>This is the simplest usage of this component.</h2>
+                                <p>We get selected value from ref attribute of select.</p>
 
-                    <ReactMaterialSelect ref="firstselect">
-                        <option dataValue="@#!$RGSAFSDF">First Option</option>
-                        <option dataValue="fgfsdgfdsg">Second Option</option>
-                        <option dataValue="43523454232">Third Option</option>
-                        <option dataValue="vxvbvbx">Fourth Option</option>
-                        <option dataValue="@agsfdg">Darth Vader</option>
-                    </ReactMaterialSelect>
-                    <button onClick={this.getValue}>Get value from select</button>
+                                <ReactMaterialSelect ref="firstselect">
+                                    <option dataValue="@#!$RGSAFSDF">First Option</option>
+                                    <option dataValue="fgfsdgfdsg">Second Option</option>
+                                    <option dataValue="43523454232">Third Option</option>
+                                    <option dataValue="vxvbvbx">Fourth Option</option>
+                                    <option dataValue="@agsfdg">Darth Vader</option>
+                                </ReactMaterialSelect>
+                                <Button ripple onClick={this.getValue}>Get value from select</Button>
 
-                    {this.renderObject(this.state.selected1)}
-                </section>
+                                {this.renderObject(this.state.selected1)}
 
-                <section id="example-2">
+                                <Highlight className="javascript">
+{`getValue() {
+    this.setState({
+        selected1: {
+            value: this.refs.firstselect.getValue(),
+            label: this.refs.firstselect.getLabel(),
+        },
+    })
+}`}
+                                </Highlight>
+                                <Highlight className="html">
+{`<ReactMaterialSelect ref="firstselect">
+    <option dataValue="@#!$RGSAFSDF">First Option</option>
+    ...
+</ReactMaterialSelect>`}
+                                </Highlight>
+                            </section>
 
-                    <ReactMaterialSelect label="Test Label" resetLabel="Join to the dark side" onChange={this.callbackFunction2}>
-                        <option dataValue="@#!$RGSAFSDF">First Option</option>
-                        <option dataValue="fgfsdgfdsg">Second Option</option>
-                        <option dataValue="43523454232">Third Option</option>
-                        <option dataValue="vxvbvbx">Fourth Option</option>
-                        <option dataValue="@agsfdg">Darth Vader</option>
-                    </ReactMaterialSelect>
+                            <section id="example-2">
+                                <h2>The most typical usage.</h2>
+                                <p>Instead of ref attribute we have callback function. We get data imidiatelly when is changed. And we added a label to our select.</p>
 
-                    {this.renderObject(this.state.selected2)}
-                </section>
+                                <ReactMaterialSelect label="Test Label" onChange={this.callbackFunction2}>
+                                    <option dataValue="@#!$RGSAFSDF">First Option</option>
+                                    <option dataValue="fgfsdgfdsg">Second Option</option>
+                                    <option dataValue="43523454232">Third Option</option>
+                                    <option dataValue="vxvbvbx">Fourth Option</option>
+                                    <option dataValue="@agsfdg">Darth Vader</option>
+                                </ReactMaterialSelect>
 
-                <section id="example-3">
+                                {this.renderObject(this.state.selected2)}
+                                <Highlight className="javascript">
+{`callbackFunction2(selected) {
+    this.setState({selected2: selected})
+}`}
+                                </Highlight>
+                                <Highlight className="html">
+{`<ReactMaterialSelect label="Test Label" onChange={this.callbackFunction2}>
+    <option dataValue="@#!$RGSAFSDF">First Option</option>
+    ...
+</ReactMaterialSelect>`}
+                                </Highlight>
+                            </section>
 
-                    <ReactMaterialSelect label="ksdahfhf awef" defaultValue="@#!$RGSAFSDF" onChange={this.callbackFunction3}>
-                        <option dataValue="@#!$RGSAFSDF">First Option</option>
-                        <option dataValue="fgfsdgfdsg">Second Option</option>
-                        <option dataValue="43523454232">Third Option</option>
-                        <option dataValue="vxvbvbx">Fourth Option</option>
-                        <option dataValue="@agsfdg">Darth Vader</option>
-                    </ReactMaterialSelect>
+                            <section id="example-3">
 
-                    {this.renderObject(this.state.selected3)}
-                </section>
-            </div>
+                                <ReactMaterialSelect label="ksdahfhf awef" defaultValue="@#!$RGSAFSDF" resetLabel="Join to the dark side" onChange={this.callbackFunction3}>
+                                    <option dataValue="@#!$RGSAFSDF">First Option</option>
+                                    <option dataValue="fgfsdgfdsg">Second Option</option>
+                                    <option dataValue="43523454232">Third Option</option>
+                                    <option dataValue="vxvbvbx">Fourth Option</option>
+                                    <option dataValue="@agsfdg">Darth Vader</option>
+                                </ReactMaterialSelect>
+
+                                {this.renderObject(this.state.selected3)}
+
+                                <Highlight className="html">
+                                    {`<ReactMaterialSelect label="ksdahfhf awef" defaultValue="@#!$RGSAFSDF" resetLabel="Join to the dark side" onChange={this.callbackFunction3}>
+    <option dataValue="@#!$RGSAFSDF">First Option</option>
+    ...
+</ReactMaterialSelect>`}
+                                </Highlight>
+                            </section>
+                        </Cell>
+                    </Grid>
+               </Content>
+           </Layout>
         )
     }
 }
