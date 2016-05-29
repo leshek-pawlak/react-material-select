@@ -1,5 +1,3 @@
-import 'react-mdl/extra/material.css'
-import 'css/example.css'
 import React, {Component} from 'react'
 import {Layout, Navigation, Header, Content, Grid, Cell} from 'react-mdl'
 import Example from 'views/Example'

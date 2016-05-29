@@ -73,10 +73,43 @@ class Example extends Component {
     render() {
         return (
             <ReactMaterialSelect ref="firstselect">
-                <option dataValue="@#!$RGSAFSDF">First Option</option>
+                <option dataValue="StarWars">Darth Vader</option>
                 ...
             </ReactMaterialSelect>
             <button onClick={this.getValue.bind(this)}>Get value and label from select</button>
+        )
+    }
+}
+```
+
+## Get value from callback function (with all props)
+
+```
+import React, {Component} from 'react'
+import ReactMaterialSelect from 'react-material-select'
+import 'react-material-select/lib/css/reactMaterialSelect.css'
+
+constructor() {
+    super()
+
+    this.state = {
+        object: {},
+    }
+
+    this.callbackFunction = this.callbackFunction.bind(this)
+}
+
+callbackFunction(selected) {
+    this.setState({object: selected})
+}
+
+class Example extends Component {
+    render() {
+        return (
+            <ReactMaterialSelect label="Choose favourite film character" defaultValue="TheGodfather" resetLabel="None of them" onChange={this.callbackFunction}>
+                <option dataValue="TheGodfather">Vito Corleone</option>
+                ...
+            </ReactMaterialSelect>
         )
     }
 }

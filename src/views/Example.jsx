@@ -1,4 +1,3 @@
-import 'highlight.js/styles/hybrid.css'
 import React, {Component, PropTypes} from 'react'
 import Highlight from 'react-highlight'
 import ReactMaterialSelect from 'components/ReactMaterialSelect'
