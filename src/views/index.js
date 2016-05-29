@@ -1,9 +1,9 @@
 import React from 'react'
 import {render} from 'react-dom'
 
-import Example from 'views/Example'
+import ExampleLayout from 'views/ExampleLayout'
 
 render(
-    <Example />,
+    <ExampleLayout />,
     document.getElementById('root')
 )

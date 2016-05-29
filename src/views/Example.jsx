@@ -1,10 +1,6 @@
-import 'css/example.css'
-import 'react-mdl/extra/material.css'
 import 'highlight.js/styles/hybrid.css'
-import React, {Component} from 'react'
-import {Layout, Navigation, Header, Content, Button, Grid, Cell} from 'react-mdl'
+import React, {Component, PropTypes} from 'react'
 import Highlight from 'react-highlight'
-
 import ReactMaterialSelect from 'components/ReactMaterialSelect'
 
 class Example extends Component {
@@ -40,7 +36,7 @@ class Example extends Component {
     }
 
     // function to render object values
-    renderObject(state) {
+    renderResponse(state) {
         return <div className="display-value">
             <p>{'{'}</p>
             <p className="label">label: {state.label}</p>
@@ -50,102 +46,107 @@ class Example extends Component {
     }
 
     render() {
-        return (
-            <Layout fixedHeader>
-               <Header title="React Material Select">
-                   <Navigation>
-                       <a href="#example-1">Minimal</a>
-                       <a href="#example-2">Default</a>
-                       <a href="#example-3">Maximum</a>
-                   </Navigation>
-               </Header>
-               <Content>
-                    <Grid>
-                        <Cell col={12}>
-                            <section id="example-1">
-                                <h2>This is the simplest usage of this component.</h2>
-                                <p>We get selected value from ref attribute of select.</p>
+        const {id} = this.props
 
-                                <ReactMaterialSelect ref="firstselect">
-                                    <option dataValue="@#!$RGSAFSDF">First Option</option>
-                                    <option dataValue="fgfsdgfdsg">Second Option</option>
-                                    <option dataValue="43523454232">Third Option</option>
-                                    <option dataValue="vxvbvbx">Fourth Option</option>
-                                    <option dataValue="@agsfdg">Darth Vader</option>
-                                </ReactMaterialSelect>
-                                <Button ripple onClick={this.getValue}>Get value from select</Button>
+        switch (id) {
+            case 'example1':
+                return (
+                    <section id="example1">
+                        <h3>The simplest usage of the component</h3>
+                        <h5>On click the button we get selected value from ref attribute of the select.</h5>
 
-                                {this.renderObject(this.state.selected1)}
+                        <ReactMaterialSelect ref="firstselect">
+                            <option dataValue="StarWars">Darth Vader</option>
+                            <option dataValue="LordOfTheRings">Bilbo Baggins</option>
+                            <option dataValue="Terminator">Terminator</option>
+                            <option dataValue="PulpFiction">Vincent Vega</option>
+                            <option dataValue="TheGodfather">Vito Corleone</option>
+                        </ReactMaterialSelect>
 
-                                <Highlight className="javascript">
+                        <button className="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised" type="button" raised ripple onClick={this.getValue}>Get value from select</button>
+
+                        {this.renderResponse(this.state.selected1)}
+
+                        <Highlight className="javascript">
 {`getValue() {
     this.setState({
         selected1: {
-            value: this.refs.firstselect.getValue(),
             label: this.refs.firstselect.getLabel(),
+            value: this.refs.firstselect.getValue(),
         },
     })
 }`}
-                                </Highlight>
-                                <Highlight className="html">
+                        </Highlight>
+                        <Highlight className="html">
 {`<ReactMaterialSelect ref="firstselect">
-    <option dataValue="@#!$RGSAFSDF">First Option</option>
+    <option dataValue="Star Wars">Darth Vader</option>
     ...
 </ReactMaterialSelect>`}
-                                </Highlight>
-                            </section>
+                        </Highlight>
+                    </section>
+                )
+            case 'example2':
+                return (
+                    <section id="example2">
+                        <h3>The most typical usage</h3>
+                        <h5>Instead of ref attribute we use callback function.</h5>
+                        <h5>We get data imidiatelly when is changed.</h5>
+                        <h5>We can set a label to our select.</h5>
 
-                            <section id="example-2">
-                                <h2>The most typical usage.</h2>
-                                <p>Instead of ref attribute we have callback function. We get data imidiatelly when is changed. And we added a label to our select.</p>
+                        <ReactMaterialSelect label="Choose favourite film character" onChange={this.callbackFunction2}>
+                            <option dataValue="PulpFiction">Vincent Vega</option>
+                            <option dataValue="StarWars">Darth Vader</option>
+                            <option dataValue="LordOfTheRings">Bilbo Baggins</option>
+                            <option dataValue="Terminator">Terminator</option>
+                            <option dataValue="TheGodfather">Vito Corleone</option>
+                        </ReactMaterialSelect>
 
-                                <ReactMaterialSelect label="Test Label" onChange={this.callbackFunction2}>
-                                    <option dataValue="@#!$RGSAFSDF">First Option</option>
-                                    <option dataValue="fgfsdgfdsg">Second Option</option>
-                                    <option dataValue="43523454232">Third Option</option>
-                                    <option dataValue="vxvbvbx">Fourth Option</option>
-                                    <option dataValue="@agsfdg">Darth Vader</option>
-                                </ReactMaterialSelect>
-
-                                {this.renderObject(this.state.selected2)}
-                                <Highlight className="javascript">
+                        {this.renderResponse(this.state.selected2)}
+                        <Highlight className="javascript">
 {`callbackFunction2(selected) {
     this.setState({selected2: selected})
 }`}
-                                </Highlight>
-                                <Highlight className="html">
-{`<ReactMaterialSelect label="Test Label" onChange={this.callbackFunction2}>
-    <option dataValue="@#!$RGSAFSDF">First Option</option>
+                        </Highlight>
+                        <Highlight className="html">
+{`<ReactMaterialSelect label="Choose favourite film character" onChange={this.callbackFunction2}>
+    <option dataValue="PulpFiction">Vincent Vega</option>
     ...
 </ReactMaterialSelect>`}
-                                </Highlight>
-                            </section>
+                        </Highlight>
+                    </section>
+                )
+            case 'example3':
+                return (
+                    <section id="example3">
+                        <h3>Full house</h3>
+                        <h5>We can set defaultValue and resetLabel which is a first option on dropdown list.</h5>
 
-                            <section id="example-3">
+                        <ReactMaterialSelect label="Choose favourite film character" defaultValue="TheGodfather" resetLabel="None of them" onChange={this.callbackFunction3}>
+                            <option dataValue="TheGodfather">Vito Corleone</option>
+                            <option dataValue="StarWars">Darth Vader</option>
+                            <option dataValue="LordOfTheRings">Bilbo Baggins</option>
+                            <option dataValue="Terminator">Terminator</option>
+                            <option dataValue="PulpFiction">Vincent Vega</option>
+                        </ReactMaterialSelect>
 
-                                <ReactMaterialSelect label="ksdahfhf awef" defaultValue="@#!$RGSAFSDF" resetLabel="Join to the dark side" onChange={this.callbackFunction3}>
-                                    <option dataValue="@#!$RGSAFSDF">First Option</option>
-                                    <option dataValue="fgfsdgfdsg">Second Option</option>
-                                    <option dataValue="43523454232">Third Option</option>
-                                    <option dataValue="vxvbvbx">Fourth Option</option>
-                                    <option dataValue="@agsfdg">Darth Vader</option>
-                                </ReactMaterialSelect>
+                        {this.renderResponse(this.state.selected3)}
 
-                                {this.renderObject(this.state.selected3)}
-
-                                <Highlight className="html">
-                                    {`<ReactMaterialSelect label="ksdahfhf awef" defaultValue="@#!$RGSAFSDF" resetLabel="Join to the dark side" onChange={this.callbackFunction3}>
-    <option dataValue="@#!$RGSAFSDF">First Option</option>
+                        <Highlight className="html">
+{`<ReactMaterialSelect label="Choose favourite film character" defaultValue="TheGodfather" resetLabel="None of them" onChange={this.callbackFunction3}>
+    <option dataValue="TheGodfather">Vito Corleone</option>
     ...
 </ReactMaterialSelect>`}
-                                </Highlight>
-                            </section>
-                        </Cell>
-                    </Grid>
-               </Content>
-           </Layout>
-        )
+                        </Highlight>
+                    </section>
+                )
+            default:
+                return null
+        }
     }
+}
+
+Example.propTypes = {
+    id: PropTypes.string.isRequired,
 }
 
 export default Example

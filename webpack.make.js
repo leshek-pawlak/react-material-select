@@ -103,7 +103,6 @@ module.exports = function makeWebpackConfig(options) {
             }),
             require('postcss-font-magician')(),
             require('postcss-nested')(),
-            require('postcss-simple-vars')(),
             require('postcss-quantity-queries')(),
             require('postcss-extend')(),
         ]

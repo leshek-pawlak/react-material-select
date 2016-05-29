@@ -51,6 +51,7 @@
         span {
             color: rgb(197, 197, 197);
             font-weight: 100;
+            height: 20px;
         }
 
         & + label {
