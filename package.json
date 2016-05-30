@@ -2,7 +2,7 @@
   "name": "react-material-select",
   "main": "lib/index.js",
   "license": "MIT",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "keywords": [
     "react",
     "material",
@@ -12,7 +12,7 @@
   "scripts": {
     "compile": "rimraf lib && babel src --ignore views --out-dir lib && postcss -u autoprefixer -u postcss-nested -u postcss-quantity-queries -u postcss-extend -o lib/css/reactMaterialSelect.css src/css/reactMaterialSelect.css",
     "dev": "webpack-dev-server --history-api-fallback --hot --inline --progress",
-    "build": "webpack --config webpack.build.js --bail"
+    "build": "rimraf dist && webpack --config webpack.build.js --bail"
   },
   "repository": {
     "type": "git",

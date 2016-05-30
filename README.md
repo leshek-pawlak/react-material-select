@@ -35,7 +35,7 @@ class Example extends Component {
     render() {
         return (
             <ReactMaterialSelect>
-                <option dataValue="@#!$RGSAFSDF">First Option</option>
+                <option dataValue="Star Wars">Darth Vader</option>
                 ...
             </ReactMaterialSelect>
         )
@@ -73,7 +73,7 @@ class Example extends Component {
     render() {
         return (
             <ReactMaterialSelect ref="firstselect">
-                <option dataValue="StarWars">Darth Vader</option>
+                <option dataValue="Star Wars">Darth Vader</option>
                 ...
             </ReactMaterialSelect>
             <button onClick={this.getValue.bind(this)}>Get value and label from select</button>
@@ -106,8 +106,8 @@ callbackFunction(selected) {
 class Example extends Component {
     render() {
         return (
-            <ReactMaterialSelect label="Choose favourite film character" defaultValue="TheGodfather" resetLabel="None of them" onChange={this.callbackFunction}>
-                <option dataValue="TheGodfather">Vito Corleone</option>
+            <ReactMaterialSelect label="Choose favourite film character" defaultValue="The Godfather" resetLabel="None of them" onChange={this.callbackFunction}>
+                <option dataValue="The Godfather">Vito Corleone</option>
                 ...
             </ReactMaterialSelect>
         )

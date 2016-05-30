@@ -15,6 +15,12 @@ class Example extends Component {
         this.getValue = this.getValue.bind(this)
         this.callbackFunction2 = this.callbackFunction2.bind(this)
         this.callbackFunction3 = this.callbackFunction3.bind(this)
+        this.getDefaultValueFromExample3 = this.getDefaultValueFromExample3.bind(this)
+    }
+
+    componentDidMount() {
+        // get default value from select, on after it shows in DOM
+        setTimeout(() => {this.getDefaultValueFromExample3()})
     }
 
     getValue() {
@@ -32,6 +38,15 @@ class Example extends Component {
 
     callbackFunction3(selected) {
         this.setState({selected3: selected})
+    }
+
+    getDefaultValueFromExample3() {
+        this.setState({
+            selected3: {
+                value: this.refs.lastselect.getValue(),
+                label: this.refs.lastselect.getLabel(),
+            },
+        })
     }
 
     // function to render object values
@@ -55,11 +70,11 @@ class Example extends Component {
                         <h5>On click the button we get selected value from ref attribute of the select.</h5>
 
                         <ReactMaterialSelect ref="firstselect">
-                            <option dataValue="StarWars">Darth Vader</option>
-                            <option dataValue="LordOfTheRings">Bilbo Baggins</option>
+                            <option dataValue="Star Wars">Darth Vader</option>
+                            <option dataValue="Lord Of The Rings">Bilbo Baggins</option>
                             <option dataValue="Terminator">Terminator</option>
-                            <option dataValue="PulpFiction">Vincent Vega</option>
-                            <option dataValue="TheGodfather">Vito Corleone</option>
+                            <option dataValue="Pulp Fiction">Vincent Vega</option>
+                            <option dataValue="The Godfather">Vito Corleone</option>
                         </ReactMaterialSelect>
 
                         <button className="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised" type="button" raised ripple onClick={this.getValue}>Get value from select</button>
@@ -93,11 +108,11 @@ class Example extends Component {
                         <h5>We can set a label to our select.</h5>
 
                         <ReactMaterialSelect label="Choose favourite film character" onChange={this.callbackFunction2}>
-                            <option dataValue="PulpFiction">Vincent Vega</option>
-                            <option dataValue="StarWars">Darth Vader</option>
-                            <option dataValue="LordOfTheRings">Bilbo Baggins</option>
+                            <option dataValue="Pulp Fiction">Vincent Vega</option>
+                            <option dataValue="Star Wars">Darth Vader</option>
+                            <option dataValue="Lord Of The Rings">Bilbo Baggins</option>
                             <option dataValue="Terminator">Terminator</option>
-                            <option dataValue="TheGodfather">Vito Corleone</option>
+                            <option dataValue="The Godfather">Vito Corleone</option>
                         </ReactMaterialSelect>
 
                         {this.renderResponse(this.state.selected2)}
@@ -107,8 +122,8 @@ class Example extends Component {
 }`}
                         </Highlight>
                         <Highlight className="html">
-{`<ReactMaterialSelect label="Choose favourite film character" onChange={this.callbackFunction2}>
-    <option dataValue="PulpFiction">Vincent Vega</option>
+{`<ReactMaterialSelect label="Choose favourite film character" onChange={this.callbackFunction2.bind(this)}>
+    <option dataValue="Pulp Fiction">Vincent Vega</option>
     ...
 </ReactMaterialSelect>`}
                         </Highlight>
@@ -120,19 +135,19 @@ class Example extends Component {
                         <h3>Full house</h3>
                         <h5>We can set defaultValue and resetLabel which is a first option on dropdown list.</h5>
 
-                        <ReactMaterialSelect label="Choose favourite film character" defaultValue="TheGodfather" resetLabel="None of them" onChange={this.callbackFunction3}>
-                            <option dataValue="TheGodfather">Vito Corleone</option>
-                            <option dataValue="StarWars">Darth Vader</option>
-                            <option dataValue="LordOfTheRings">Bilbo Baggins</option>
+                        <ReactMaterialSelect label="Choose favourite film character" ref="lastselect" defaultValue="The Godfather" resetLabel="None of them" onChange={this.callbackFunction3}>
+                            <option dataValue="The Godfather">Vito Corleone</option>
+                            <option dataValue="Star Wars">Darth Vader</option>
+                            <option dataValue="Lord Of The Rings">Bilbo Baggins</option>
                             <option dataValue="Terminator">Terminator</option>
-                            <option dataValue="PulpFiction">Vincent Vega</option>
+                            <option dataValue="Pulp Fiction">Vincent Vega</option>
                         </ReactMaterialSelect>
 
                         {this.renderResponse(this.state.selected3)}
 
                         <Highlight className="html">
-{`<ReactMaterialSelect label="Choose favourite film character" defaultValue="TheGodfather" resetLabel="None of them" onChange={this.callbackFunction3}>
-    <option dataValue="TheGodfather">Vito Corleone</option>
+{`<ReactMaterialSelect label="Choose favourite film character" defaultValue="The Godfather" resetLabel="None of them" onChange={this.callbackFunction3.bind(this)}>
+    <option dataValue="The Godfather">Vito Corleone</option>
     ...
 </ReactMaterialSelect>`}
                         </Highlight>
