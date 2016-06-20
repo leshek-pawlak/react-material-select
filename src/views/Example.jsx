@@ -19,8 +19,10 @@ class Example extends Component {
     }
 
     componentDidMount() {
-        // get default value from select, on after it shows in DOM
-        setTimeout(() => {this.getDefaultValueFromExample3()})
+        // get default value from select, after it shows in DOM
+        if (this.refs.lastselect) {
+            this.getDefaultValueFromExample3()
+        }
     }
 
     getValue() {
@@ -41,12 +43,14 @@ class Example extends Component {
     }
 
     getDefaultValueFromExample3() {
-        this.setState({
-            selected3: {
-                value: this.refs.lastselect.getValue(),
-                label: this.refs.lastselect.getLabel(),
-            },
-        })
+        if (this.refs.lastselect) {
+            this.setState({
+                selected3: {
+                    value: this.refs.lastselect.getValue(),
+                    label: this.refs.lastselect.getLabel(),
+                },
+            })
+        }
     }
 
     // function to render object values
@@ -71,10 +75,6 @@ class Example extends Component {
 
                         <ReactMaterialSelect ref="firstselect">
                             <option dataValue="Star Wars">Darth Vader</option>
-                            <option dataValue="Lord Of The Rings">Bilbo Baggins</option>
-                            <option dataValue="Terminator">Terminator</option>
-                            <option dataValue="Pulp Fiction">Vincent Vega</option>
-                            <option dataValue="The Godfather">Vito Corleone</option>
                         </ReactMaterialSelect>
 
                         <button className="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised" type="button" raised ripple onClick={this.getValue}>Get value from select</button>

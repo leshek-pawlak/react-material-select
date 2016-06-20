@@ -59,7 +59,13 @@ class ReactMaterialSelect extends Component {
 
     handleOptionClick(e) {
         const value = e.target.attributes.data.value
-        const label = this.props.children[e.target.value].props.children
+        let label
+        // if there is only one option this.props.children is object not an array
+        if (this.props.children.length) {
+            label = this.props.children[e.target.value].props.children
+        } else {
+            label = this.props.children.props.children
+        }
 
         let newState = {
             isOpen: false,
@@ -108,12 +114,21 @@ class ReactMaterialSelect extends Component {
 
     // get childrens
     getOptions() {
-        return this.props.children.map(child => {
-            return {
-                key: child.props.dataValue,
-                label: child.props.children,
-            }
-        })
+        // if there is only one option this.props.children is object not an array
+        if (this.props.children.length) {
+            // console.log(this.props.children.length, this.props.children)
+            return this.props.children.map(child => {
+                return {
+                    key: child.props.dataValue,
+                    label: child.props.children,
+                }
+            })
+        }
+
+        return [{
+            key: this.props.children.props.dataValue,
+            label: this.props.children.props.children,
+        }]
     }
 
     render() {
@@ -144,7 +159,7 @@ class ReactMaterialSelect extends Component {
 }
 
 ReactMaterialSelect.propTypes = {
-    children: PropTypes.array.isRequired,
+    children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
     defaultValue: PropTypes.string,
     resetLabel: PropTypes.string,
     onChange: PropTypes.func,
