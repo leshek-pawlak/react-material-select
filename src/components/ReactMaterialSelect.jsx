@@ -63,7 +63,7 @@ class ReactMaterialSelect extends Component {
         // if there is only one option this.props.children is object not an array
         if (this.props.children.length) {
             label = this.props.children[e.target.value].props.children
-        } else {
+        } else if (this.props.children) {
             label = this.props.children.props.children
         }
 
