@@ -168,7 +168,10 @@ class ReactMaterialSelect extends Component {
 ReactMaterialSelect.propTypes = {
     children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
     defaultValue: PropTypes.string,
-    resetLabel: PropTypes.string,
+    resetLabel: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.bool,
+    ]),
     onChange: PropTypes.func,
     label: PropTypes.string,
 }
