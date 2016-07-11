@@ -147,9 +147,12 @@ class ReactMaterialSelect extends Component {
                 <label className="rms-label">{label}</label>
                 <i className="rms-caret">arrow_drop_down</i>
                 {this.state.isOpen && <ul className='rms-list'>
-                    <li className="rms-item rms-item__reset" onMouseDown={this.handleResetClick} onClick={this.handleResetClick}>
-                        {resetLabel ? resetLabel : 'No value'}
-                    </li>
+                    {
+                        resetLabel && 
+                            <li className="rms-item rms-item__reset" onMouseDown={this.handleResetClick} onClick={this.handleResetClick}>
+                                {resetLabel}
+                            </li>
+                    }
                     {this.getOptions().map((opt, key) => {
                         let selectClassName = classNames('rms-item', {'rms-item__active': opt.selected})
                         return <li key={'reactMaterialSelect_' + key} className={selectClassName} value={key} data={opt.key} onMouseDown={this.handleOptionClick} onClick={this.handleOptionClick}>
@@ -168,6 +171,10 @@ ReactMaterialSelect.propTypes = {
     resetLabel: PropTypes.string,
     onChange: PropTypes.func,
     label: PropTypes.string,
+}
+
+ReactMaterialSelect.defaultProps = {
+    resetLabel: 'No value',
 }
 
 export default ReactMaterialSelect
