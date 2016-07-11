@@ -124,12 +124,12 @@ class ReactMaterialSelect extends Component {
                 }
             })
         }
-        
+
         if (this.props.children) {
             return [{
                 key: this.props.children.props.dataValue,
                 label: this.props.children.props.children,
-            }]    
+            }]
         }
 
         return []
@@ -148,8 +148,8 @@ class ReactMaterialSelect extends Component {
                 <i className="rms-caret">arrow_drop_down</i>
                 {this.state.isOpen && <ul className='rms-list'>
                     {
-                        resetLabel && 
-                            <li className="rms-item rms-item__reset" onMouseDown={this.handleResetClick} onClick={this.handleResetClick}>
+                        resetLabel
+                            && <li className="rms-item rms-item__reset" onMouseDown={this.handleResetClick} onClick={this.handleResetClick}>
                                 {resetLabel}
                             </li>
                     }
