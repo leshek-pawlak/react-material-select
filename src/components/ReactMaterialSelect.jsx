@@ -124,11 +124,15 @@ class ReactMaterialSelect extends Component {
                 }
             })
         }
+        
+        if (this.props.children) {
+            return [{
+                key: this.props.children.props.dataValue,
+                label: this.props.children.props.children,
+            }]    
+        }
 
-        return [{
-            key: this.props.children.props.dataValue,
-            label: this.props.children.props.children,
-        }]
+        return []
     }
 
     render() {
