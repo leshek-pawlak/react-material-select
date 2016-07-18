@@ -61,9 +61,9 @@ class ReactMaterialSelect extends Component {
         const value = e.target.attributes.data.value
         let label
         // if there is only one option this.props.children is object not an array
-        if (this.props.children.length) {
+        if (this.props.children instanceof Array) {
             label = this.props.children[e.target.value].props.children
-        } else {
+        } else if (this.props.children) {
             label = this.props.children.props.children
         }
 
@@ -115,7 +115,7 @@ class ReactMaterialSelect extends Component {
     // get childrens
     getOptions() {
         // if there is only one option this.props.children is object not an array
-        if (this.props.children.length) {
+        if (this.props.children instanceof Array) {
             // console.log(this.props.children.length, this.props.children)
             return this.props.children.map(child => {
                 return {
@@ -125,10 +125,14 @@ class ReactMaterialSelect extends Component {
             })
         }
 
-        return [{
-            key: this.props.children.props.dataValue,
-            label: this.props.children.props.children,
-        }]
+        if (this.props.children) {
+            return [{
+                key: this.props.children.props.dataValue,
+                label: this.props.children.props.children,
+            }]
+        }
+
+        return []
     }
 
     render() {
@@ -143,9 +147,12 @@ class ReactMaterialSelect extends Component {
                 <label className="rms-label">{label}</label>
                 <i className="rms-caret">arrow_drop_down</i>
                 {this.state.isOpen && <ul className='rms-list'>
-                    <li className="rms-item rms-item__reset" onMouseDown={this.handleResetClick} onClick={this.handleResetClick}>
-                        {resetLabel ? resetLabel : 'No value'}
-                    </li>
+                    {
+                        resetLabel
+                            && <li className="rms-item rms-item__reset" onMouseDown={this.handleResetClick} onClick={this.handleResetClick}>
+                                {resetLabel}
+                            </li>
+                    }
                     {this.getOptions().map((opt, key) => {
                         let selectClassName = classNames('rms-item', {'rms-item__active': opt.selected})
                         return <li key={'reactMaterialSelect_' + key} className={selectClassName} value={key} data={opt.key} onMouseDown={this.handleOptionClick} onClick={this.handleOptionClick}>
@@ -161,9 +168,16 @@ class ReactMaterialSelect extends Component {
 ReactMaterialSelect.propTypes = {
     children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
     defaultValue: PropTypes.string,
-    resetLabel: PropTypes.string,
+    resetLabel: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.bool,
+    ]),
     onChange: PropTypes.func,
     label: PropTypes.string,
+}
+
+ReactMaterialSelect.defaultProps = {
+    resetLabel: 'No value',
 }
 
 export default ReactMaterialSelect
