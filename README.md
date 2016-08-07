@@ -120,3 +120,15 @@ class Example extends Component {
     }
 }
 ```
+
+---
+
+# Contributing
+
+To remember how to do it ;)
+
+1. change version of the package
+2. `npm run compile`
+3. `npm run build`
+4. git commit
+5. npm publish
