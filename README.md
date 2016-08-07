@@ -18,11 +18,26 @@ http://react-material-select.netlify.com/
 
 # Documentation
 
-## Basic Usage
+## All parameters:
+    <ReactMaterialSelect ...>
 
-### Required options:
-    option element:
-        dataValue: selected value (string)
+parameter | description | is required
+:-: | :-: | :-:
+onChange | callback function (function) | no
+defaultValue | start value. One of dataValue keys. Default: null (string) | no
+label | label for select. Default: null (string) | no
+resetLabel | label for reset select value. Default: 'No value' (string) it also can be boolean value "false" | no
+
+
+    <option ...>
+
+
+parameter | description | is required
+:-: | :-: | :-:
+dataValue | selected value (string) | yes
+
+
+## Basic Usage:
 
 It should looks like below:
 
@@ -43,21 +58,6 @@ class Example extends Component {
 }
 ```
 
-## All options:
-    ReactMaterialSelect
-
-parameter | description | is required
-:-: | :-: | :-:
-onChange | callback function (function) | no
-defaultValue | start value. One of dataValue keys. Default: null (string) | no
-label | label for select. Default: null (string) | no
-resetLabel | label for reset select value. Default: 'No value' (string) it also can be boolean value "false" | no
-
-    option element
-
-parameter | description | is required
-:-: | :-: | :-:
-dataValue | selected value (string) | yes
 
 ## Get value and label from refs
 
@@ -131,4 +131,4 @@ To remember how to do it ;)
 2. `npm run compile`
 3. `npm run build`
 4. git commit
-5. npm publish
+5. `npm publish`
