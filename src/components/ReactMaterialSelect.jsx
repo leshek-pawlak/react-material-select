@@ -29,7 +29,8 @@ class ReactMaterialSelect extends Component {
         this.fireChangeEvent = this.fireChangeEvent.bind(this)
         this.handleToggleSelect = this.handleToggleSelect.bind(this)
         this.handleOptionClick = this.handleOptionClick.bind(this)
-        this.handleResetClick = this.handleResetClick.bind(this)
+        this.handleResetSelect = this.handleResetSelect.bind(this)
+        this.changeState = this.changeState.bind(this)
         this.getValue = this.getValue.bind(this)
     }
 
@@ -67,31 +68,31 @@ class ReactMaterialSelect extends Component {
             label = this.props.children.props.children
         }
 
-        let newState = {
+        this.changeState({
             isOpen: false,
             isSelected: value,
             selected: {
                 value,
                 label,
             },
-        }
+        })
+    }
 
+    // change state with callback function
+    changeState(newState) {
         this.fireChangeEvent(newState)
         this.setState(newState)
     }
 
-    handleResetClick() {
-        let newState = {
+    handleResetSelect() {
+        this.changeState({
             isOpen: false,
             isSelected: null,
             selected: {
                 value: '',
                 label: '',
             },
-        }
-
-        this.fireChangeEvent(newState)
-        this.setState(newState)
+        })
     }
 
     // close select on click outside the select
@@ -149,7 +150,7 @@ class ReactMaterialSelect extends Component {
                 {this.state.isOpen && <ul className='rms-list'>
                     {
                         resetLabel
-                            && <li className="rms-item rms-item__reset" onMouseDown={this.handleResetClick} onClick={this.handleResetClick}>
+                            && <li className="rms-item rms-item__reset" onMouseDown={this.handleResetSelect} onClick={this.handleResetSelect}>
                                 {resetLabel}
                             </li>
                     }

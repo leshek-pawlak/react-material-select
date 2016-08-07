@@ -15,6 +15,7 @@ class Example extends Component {
         this.getValue = this.getValue.bind(this)
         this.callbackFunction2 = this.callbackFunction2.bind(this)
         this.callbackFunction3 = this.callbackFunction3.bind(this)
+        this.resetSelect = this.resetSelect.bind(this)
         this.getDefaultValueFromExample3 = this.getDefaultValueFromExample3.bind(this)
     }
 
@@ -32,6 +33,10 @@ class Example extends Component {
                 label: this.refs.firstselect.getLabel(),
             },
         })
+    }
+
+    resetSelect() {
+        this.refs.lastselect.handleResetSelect()
     }
 
     callbackFunction2(selected) {
@@ -92,7 +97,7 @@ class Example extends Component {
 }`}
                         </Highlight>
                         <Highlight className="html">
-{`<ReactMaterialSelect ref="firstselect">
+{`<ReactMaterialSelect ref="firstselect" resetLabel={false}>
     <option dataValue="Star Wars">Darth Vader</option>
     ...
 </ReactMaterialSelect>`}
@@ -105,9 +110,9 @@ class Example extends Component {
                         <h3>The most typical usage</h3>
                         <h5>Instead of ref attribute we use callback function.</h5>
                         <h5>We get data imidiatelly when is changed.</h5>
-                        <h5>We can set a label to our select.</h5>
+                        <h5>We can set a label and resetLabel to our select.</h5>
 
-                        <ReactMaterialSelect label="Choose favourite film character" onChange={this.callbackFunction2}>
+                        <ReactMaterialSelect label="Choose favourite film character" resetLabel="None of them" onChange={this.callbackFunction2}>
                             <option dataValue="Pulp Fiction">Vincent Vega</option>
                             <option dataValue="Star Wars">Darth Vader</option>
                             <option dataValue="Lord Of The Rings">Bilbo Baggins</option>
@@ -122,7 +127,7 @@ class Example extends Component {
 }`}
                         </Highlight>
                         <Highlight className="html">
-{`<ReactMaterialSelect label="Choose favourite film character" onChange={this.callbackFunction2.bind(this)}>
+{`<ReactMaterialSelect label="Choose favourite film character" resetLabel="None of them" onChange={this.callbackFunction2.bind(this)}>
     <option dataValue="Pulp Fiction">Vincent Vega</option>
     ...
 </ReactMaterialSelect>`}
@@ -133,9 +138,10 @@ class Example extends Component {
                 return (
                     <section id="example3">
                         <h3>Full house</h3>
-                        <h5>We can set defaultValue and resetLabel which is a first option on dropdown list.</h5>
+                        <h5>We can set defaultValue which is a first option on dropdown list.</h5>
+                        <h6>The resetLabel can be a boolean.</h6>
 
-                        <ReactMaterialSelect label="Choose favourite film character" ref="lastselect" defaultValue="The Godfather" resetLabel="None of them" onChange={this.callbackFunction3}>
+                        <ReactMaterialSelect label="Choose favourite film character" ref="lastselect" defaultValue="The Godfather" resetLabel={false} onChange={this.callbackFunction3}>
                             <option dataValue="The Godfather">Vito Corleone</option>
                             <option dataValue="Star Wars">Darth Vader</option>
                             <option dataValue="Lord Of The Rings">Bilbo Baggins</option>
@@ -143,13 +149,26 @@ class Example extends Component {
                             <option dataValue="Pulp Fiction">Vincent Vega</option>
                         </ReactMaterialSelect>
 
+                        <button className="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised" type="button" raised ripple onClick={this.resetSelect}>Reset the select value</button>
+
                         {this.renderResponse(this.state.selected3)}
 
                         <Highlight className="html">
-{`<ReactMaterialSelect label="Choose favourite film character" defaultValue="The Godfather" resetLabel="None of them" onChange={this.callbackFunction3.bind(this)}>
+{`<ReactMaterialSelect label="Choose favourite film character" ref="lastselect" defaultValue="The Godfather" resetLabel={false} onChange={this.callbackFunction3.bind(this)}>
     <option dataValue="The Godfather">Vito Corleone</option>
     ...
 </ReactMaterialSelect>`}
+                        </Highlight>
+
+                        <h6>It is possible to reset select remotely (click the reset button)</h6>
+
+                        <Highlight className="javascript">
+{`resetSelect() {
+    this.refs.lastselect.handleResetSelect()
+}`}
+                        </Highlight>
+                        <Highlight className="html">
+{'<button className="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised" type="button" raised ripple onClick={this.resetSelect}>Reset the select value</button>'}
                         </Highlight>
                     </section>
                 )

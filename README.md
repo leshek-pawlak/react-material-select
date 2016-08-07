@@ -45,13 +45,19 @@ class Example extends Component {
 
 ## All options:
     ReactMaterialSelect
-        onChange: callback function (function)
-        defaultValue: start value. One of dataValue keys. Default: null (string)
-        label: label for select. Default: null (string)
-        resetLabel: label for reset select value. Default: 'No value' (string)
+
+parameter | description | is required
+:-: | :-: | :-:
+onChange | callback function (function) | no
+defaultValue | start value. One of dataValue keys. Default: null (string) | no
+label | label for select. Default: null (string) | no
+resetLabel | label for reset select value. Default: 'No value' (string) it also can be boolean value "false" | no
 
     option element
-        dataValue: selected value (string)
+
+parameter | description | is required
+:-: | :-: | :-:
+dataValue | selected value (string) | yes
 
 ## Get value and label from refs
 
