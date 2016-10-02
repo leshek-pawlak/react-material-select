@@ -125,6 +125,7 @@ module.exports = function makeWebpackConfig(options) {
             template: './src/views/index.html',
             inject: 'body',
         }),
+        new DashboardPlugin(dashboard.setData),
     ]
 
     if (!BUILD) {
@@ -132,8 +133,7 @@ module.exports = function makeWebpackConfig(options) {
             new WebpackNotifierPlugin({
                 title: 'React Material Select',
                 contentImage: path.join(__dirname, 'logo.jpg'),
-            }),
-            new DashboardPlugin(dashboard.setData)
+            })
         )
     }
 
