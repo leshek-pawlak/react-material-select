@@ -1,5 +1,4 @@
-import React, {Component, PropTypes} from 'react'
-import ReactDOM from 'react-dom'
+import React, { Component, PropTypes } from 'react'
 import classNames from 'classnames'
 
 class ReactMaterialSelect extends Component {
@@ -17,6 +16,7 @@ class ReactMaterialSelect extends Component {
 
         this.state = {
             isOpen: false,
+            rmsListTopValue: 0,
             isSelected: selectedValue,
             selected: {
                 label: selectedValue ? selectedValue.label : props.label,
@@ -32,6 +32,7 @@ class ReactMaterialSelect extends Component {
         this.handleResetSelect = this.handleResetSelect.bind(this)
         this.changeState = this.changeState.bind(this)
         this.getValue = this.getValue.bind(this)
+        this.countTopRmsList = this.countTopRmsList.bind(this)
     }
 
     componentDidMount() {
@@ -45,6 +46,11 @@ class ReactMaterialSelect extends Component {
         document.removeEventListener('touchend', this.handleDocumentClick, false)
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (this.refs.rmsList && prevState.isOpen !== this.state.isOpen) {
+            this.countTopRmsList()
+        }
+    }
     // the simplest way to get selected value
     getValue() {
         return this.state.selected.value
@@ -98,7 +104,7 @@ class ReactMaterialSelect extends Component {
     // close select on click outside the select
     handleDocumentClick(event) {
         if (this.mounted) {
-            if (!ReactDOM.findDOMNode(this).contains(event.target)) {
+            if (!this.refs.rmsWrapper.contains(event.target)) {
                 this.setState({
                     isOpen: false,
                 })
@@ -136,33 +142,38 @@ class ReactMaterialSelect extends Component {
         return []
     }
 
+    countTopRmsList() {
+        let bottomMargin = 40
+        this.setState({
+            rmsListTopValue: document.body.offsetHeight - this.refs.rmsList.getBoundingClientRect().bottom > this.refs.rmsList.offsetHeight ? 0 : -this.refs.rmsList.offsetHeight / 2 - bottomMargin,
+        })
+    }
+
     render() {
-        const {label, resetLabel} = this.props
+        const { label, resetLabel } = this.props
 
         let textClassName = classNames('rms-text', {'rms-text__empty': !this.state.isSelected})
-        return (
-            <div className="rms-wrapper">
-                <div className={textClassName} onClick={this.handleToggleSelect}>
-                    <span>{this.state.selected.label ? this.state.selected.label : label}</span>
-                </div>
-                <label className="rms-label">{label}</label>
-                <i className="rms-caret">arrow_drop_down</i>
-                {this.state.isOpen && <ul className='rms-list'>
-                    {
-                        resetLabel
-                            && <li className="rms-item rms-item__reset" onMouseDown={this.handleResetSelect} onClick={this.handleResetSelect}>
-                                {resetLabel}
-                            </li>
-                    }
-                    {this.getOptions().map((opt, key) => {
-                        let selectClassName = classNames('rms-item', {'rms-item__active': opt.selected})
-                        return <li key={'reactMaterialSelect_' + key} className={selectClassName} value={key} data={opt.key} onMouseDown={this.handleOptionClick} onClick={this.handleOptionClick}>
-                            {opt.label}
-                        </li>
-                    })}
-                </ul>}
+        return <div className="rms-wrapper" ref="rmsWrapper">
+            <div className={textClassName} onClick={this.handleToggleSelect}>
+                <span>{this.state.selected.label ? this.state.selected.label : label}</span>
             </div>
-        )
+            <label className="rms-label">{label}</label>
+            <i className="rms-caret">arrow_drop_down</i>
+            {this.state.isOpen && <ul ref="rmsList" className='rms-list' style={{ top: this.state.rmsListTopValue }}>
+                {
+                    resetLabel
+                        && <li className="rms-item rms-item__reset" onMouseDown={this.handleResetSelect} onClick={this.handleResetSelect}>
+                            {resetLabel}
+                        </li>
+                }
+                {this.getOptions().map((opt, key) => {
+                    let selectClassName = classNames('rms-item', {'rms-item__active': opt.selected})
+                    return <li key={'reactMaterialSelect_' + key} className={selectClassName} value={key} data={opt.key} onMouseDown={this.handleOptionClick} onClick={this.handleOptionClick}>
+                        {opt.label}
+                    </li>
+                })}
+            </ul>}
+        </div>
     }
 }
 

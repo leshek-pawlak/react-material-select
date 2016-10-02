@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react'
+import React, { Component, PropTypes } from 'react'
 import Highlight from 'react-highlight'
 import ReactMaterialSelect from 'components/ReactMaterialSelect'
 
@@ -172,6 +172,21 @@ class Example extends Component {
                         </Highlight>
                     </section>
                 )
+            case 'example4':
+                return (
+                        <section id="example4">
+                            <h3>Renders nice even on the page bottom</h3>
+                            <h6>When the select is on the page bottom and options are higher than page, ReactMaterialSelect adjust their top to show all options.</h6>
+
+                            <ReactMaterialSelect ref="bottom-page-select" defaultValue="The Godfather">
+                                <option dataValue="The Godfather">Vito Corleone</option>
+                                <option dataValue="Star Wars">Darth Vader</option>
+                                <option dataValue="Lord Of The Rings">Bilbo Baggins</option>
+                                <option dataValue="Terminator">Terminator</option>
+                                <option dataValue="Pulp Fiction">Vincent Vega</option>
+                            </ReactMaterialSelect>
+                        </section>
+                    )
             default:
                 return null
         }

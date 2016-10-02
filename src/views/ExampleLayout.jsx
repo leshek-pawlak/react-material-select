@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import {Layout, Navigation, Header, Content, Grid, Cell} from 'react-mdl'
+import React, { Component } from 'react'
+import { Layout, Navigation, Header, Content, Grid, Cell } from 'react-mdl'
 import Example from 'views/Example'
 
 class ExampleLayout extends Component {
@@ -27,6 +27,11 @@ class ExampleLayout extends Component {
                     <Grid>
                         <Cell col={12}>
                             <Example id="example3" />
+                        </Cell>
+                    </Grid>
+                    <Grid>
+                        <Cell col={12}>
+                            <Example id="example4" />
                         </Cell>
                     </Grid>
                </Content>
