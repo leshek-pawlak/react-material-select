@@ -8,6 +8,10 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var CopyWebpackPlugin = require('copy-webpack-plugin')
 
+var Dashboard = require('webpack-dashboard')
+var DashboardPlugin = require('webpack-dashboard/plugin')
+var dashboard = new Dashboard()
+
 module.exports = function makeWebpackConfig(options) {
     /**
      * Environment type
@@ -128,7 +132,8 @@ module.exports = function makeWebpackConfig(options) {
             new WebpackNotifierPlugin({
                 title: 'React Material Select',
                 contentImage: path.join(__dirname, 'logo.jpg'),
-            })
+            }),
+            new DashboardPlugin(dashboard.setData)
         )
     }
 
@@ -149,11 +154,13 @@ module.exports = function makeWebpackConfig(options) {
      * Dev server configuration
      */
     config.devServer = {
-        contentBase: './public',
+        contentBase: './',
+        noInfo: true,
+        quiet: true,
         stats: {
             modules: false,
             cached: false,
-            colors: true,
+            colors: false,
             chunk: false,
         },
     }
