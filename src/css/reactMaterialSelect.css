@@ -1,6 +1,14 @@
 .rms-wrapper {
     display: block;
     position: relative;
+    height: 70px;
+
+    &::after,
+    &::before {
+        display: table;
+        content: "";
+        clear: both;
+    }
 }
 
 .rms-label {
@@ -30,8 +38,10 @@
     width: 100%;
     max-width: 100%;
     margin: 0;
-    padding: 20px 0;
+    line-height: 0;
+    padding: 0;
     cursor: pointer;
+    height: 0;
 
     span {
         border: none;
@@ -39,8 +49,8 @@
         display: block;
         font-size: 16px;
         font-family: "Helvetica", "Arial", sans-serif;
-        margin: 0;
-        padding: 4px 0;
+        margin: 18px 0 20px;
+        padding: 20px 0 18px;
         width: 100%;
         background: none;
         text-align: left;
@@ -51,7 +61,7 @@
         span {
             color: rgb(197, 197, 197);
             font-weight: 100;
-            height: 20px;
+            height: 0;
         }
 
         & + label {
@@ -76,12 +86,11 @@
     -webkit-font-smoothing: antialiased;
     position: absolute;
     right: 8px;
-    top: 20px;
+    top: 25px;
     color: rgba(0, 0, 0, 0.12);
 }
 
 .rms-list {
-    user-select: none;
     position: absolute;
     transition: .25s ease;
     top: 0;
@@ -99,6 +108,11 @@
         line-height: 35px;
         cursor: pointer;
 
+        &:focus {
+            outline: none;
+        }
+
+        &::selection,
         &:hover {
             background-color: #eaeaea;
         }
