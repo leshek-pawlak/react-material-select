@@ -30,6 +30,7 @@ class ReactMaterialSelect extends Component {
         this.handleToggleSelect = this.handleToggleSelect.bind(this)
         this.handleOptionClick = this.handleOptionClick.bind(this)
         this.handleResetSelect = this.handleResetSelect.bind(this)
+        this.handleSetSelect = this.handleSetSelect.bind(this)
         this.changeState = this.changeState.bind(this)
         this.getValue = this.getValue.bind(this)
         this.countTopRmsList = this.countTopRmsList.bind(this)
@@ -97,6 +98,17 @@ class ReactMaterialSelect extends Component {
             selected: {
                 value: '',
                 label: '',
+            },
+        })
+    }
+
+    handleSetSelect(label, value) {
+        this.changeState({
+            isOpen: false,
+            isSelected: true,
+            selected: {
+                value: value,
+                label: label,
             },
         })
     }
