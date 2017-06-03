@@ -34,6 +34,11 @@ class ExampleLayout extends Component {
                             <Example id="example4" />
                         </Cell>
                     </Grid>
+                    <Grid>
+                        <Cell col={12}>
+                            <Example id="example5" />
+                        </Cell>
+                    </Grid>
                </Content>
            </Layout>
         )
