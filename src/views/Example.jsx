@@ -186,7 +186,7 @@ class Example extends Component {
                                 <option dataValue="Pulp Fiction">Vincent Vega</option>
                             </ReactMaterialSelect>
                         </section>
-                    )
+                )
             default:
                 return null
         }
