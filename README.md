@@ -36,6 +36,16 @@ parameter | description | is required
 :-: | :-: | :-:
 dataValue | selected value (string) | yes
 
+## All methods
+
+method | description
+:-: | :-:
+this.getValue() | get selected value
+this.getLabel() | get selected label
+this.handleToggleSelect() | open / close selector
+this.handleResetSelect() | reset selector value and label
+this.handleSetSelect(label, value) | set specified value and label to selector
+this.getOptions() | get all available options as an array of objects
 
 ## Basic Usage:
 
