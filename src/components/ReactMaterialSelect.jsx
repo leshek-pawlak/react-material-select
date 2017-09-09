@@ -170,7 +170,7 @@ class ReactMaterialSelect extends Component {
                 <span>{this.state.selected.label ? this.state.selected.label : label}</span>
             </div>
             <label className="rms-label">{label}</label>
-            <i className="rms-caret">arrow_drop_down</i>
+            <i onClick={this.handleToggleSelect} className="rms-caret">arrow_drop_down</i>
             {this.state.isOpen && <ul ref="rmsList" className='rms-list' style={{ top: this.state.rmsListTopValue }}>
                 {
                     resetLabel

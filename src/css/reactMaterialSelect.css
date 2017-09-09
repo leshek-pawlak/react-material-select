@@ -88,6 +88,7 @@
     right: 8px;
     top: 25px;
     color: rgba(0, 0, 0, 0.12);
+		cursor: pointer;
 }
 
 .rms-list {
