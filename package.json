@@ -2,7 +2,7 @@
   "name": "react-material-select",
   "main": "lib/index.js",
   "license": "MIT",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "keywords": [
     "react",
     "material",
