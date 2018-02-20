@@ -18,6 +18,8 @@ before_install:
 before_script:
   - ./node_modules/.bin/eslint-changes
 
+script: true
+
 deploy:
   provider: script
   skip_cleanup: true
