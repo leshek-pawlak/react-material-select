@@ -1,0 +1,25 @@
+language: node_js
+node_js:
+  - "lts/*"
+
+branches:
+  only:
+  - master
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
+
+before_install:
+  - npm install babel-cli@6.16.0 eslint@3.8.1 is-my-json-valid@2.16.1 eslint-changes
+
+# If there is error here travis will be stopped
+before_script:
+  - ./node_modules/.bin/eslint-changes
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script:
+    - npx semantic-release
